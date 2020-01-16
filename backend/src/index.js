@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const routes = require('./routes');
 
 const app = express();
 
@@ -9,10 +10,6 @@ mongoose.connect('mongodb+srv://omnistack:omnistack@cluster0-bjf1i.mongodb.net/w
 });
 
 app.use(express.json());
-
-app.post('/users', (request, response) => {
-  console.log(request.body);
-  return response.json({ message: 'Hello world' });
-});
+app.use(routes);
 
 app.listen(3333);
